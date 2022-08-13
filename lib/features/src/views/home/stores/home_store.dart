@@ -13,7 +13,7 @@ abstract class _HomeStoreBase with Store {
   _HomeStoreBase(this.getMovieById);
 
   @observable
-  Movie movie = Movie(name: '', imageUrl: '');
+  Movie movie = Movie(name: '', imageUrl: '', popularity: 0, voteCount: 0);
 
   @action
   Future fetchMovieById(int id) async {
@@ -22,7 +22,11 @@ abstract class _HomeStoreBase with Store {
       response.fold(
         (l) => 'Erro ao retornar filme',
         (r) {
-          movie = Movie(imageUrl: r.imageUrl, name: r.name);
+          movie = Movie(
+              imageUrl: r.imageUrl,
+              name: r.name,
+              popularity: r.popularity,
+              voteCount: r.voteCount);
         },
       );
     } catch (e) {
