@@ -25,4 +25,26 @@ class MovieDatasourceImpl implements MovieDatasource {
       throw Failure();
     }
   }
+
+  @override
+  Future<List<MovieModel>> getSimilarMovies(int id, int page) async {
+    final similarMoviesListResponse = await dio.get(
+        'https://api.themoviedb.org/3/movie/11544/similar?api_key=d3658a5e2b9b0484f233be9d70f0aeeb');
+
+    if (similarMoviesListResponse.statusCode == 200) {
+      final similarMovieList =
+          similarMoviesListResponse.data['results'] as List;
+
+      List<MovieModel> movieList = [];
+
+      for (var movie in similarMovieList) {
+        print(movie);
+        movieList.add(MovieModel.fromJson(movie.data));
+      }
+
+      return movieList;
+    } else {
+      throw Failure();
+    }
+  }
 }
