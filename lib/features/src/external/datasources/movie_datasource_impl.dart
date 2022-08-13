@@ -18,13 +18,11 @@ class MovieDatasourceImpl implements MovieDatasource {
   }
 
   Future<MovieModel> getAndParseMovie(String path) async {
-    final response = await dio.get(
+    final movieDetails = await dio.get(
         'https://api.themoviedb.org/3/movie/11544?api_key=d3658a5e2b9b0484f233be9d70f0aeeb');
 
-    response.data;
-
-    if (response.statusCode == 200) {
-      return MovieModel.fromJson(json.decode(response.data));
+    if (movieDetails.statusCode == 200) {
+      return MovieModel.fromJson(movieDetails.data);
     } else {
       throw Failure();
     }
