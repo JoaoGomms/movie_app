@@ -4,12 +4,14 @@ class MovieModel extends Movie {
   MovieModel({required super.name, required super.imageUrl});
 
   factory MovieModel.fromJson(Map<String, dynamic> json) {
-    // TODO Replace json with real data
+    String imageBasepath = 'https://image.tmdb.org/t/p/w500';
+
     return MovieModel(
-        imageUrl: json['atributoJsonImagem'], name: json['atributoJsonTitle']);
+        imageUrl: imageBasepath + json["poster_path"],
+        name: json['original_title']);
   }
 
   Map<String, dynamic> toJson() {
-    return {'atributoJsonTitle': name, 'atributoJsonImagem': imageUrl};
+    return {'original_title': name, 'poster_path': imageUrl};
   }
 }
