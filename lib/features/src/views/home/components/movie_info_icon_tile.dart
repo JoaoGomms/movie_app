@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 
 class MovieInfoIconTile extends StatelessWidget {
-  IconData icon;
-  String text;
+  final IconData icon;
+  final String text;
 
-  MovieInfoIconTile({required this.icon, required this.text, Key? key})
+  const MovieInfoIconTile({required this.icon, required this.text, Key? key})
       : super(key: key);
 
   @override

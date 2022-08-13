@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:movie_app/features/src/data/models/movie_model.dart';
 import 'package:movie_app/features/src/errors/failure.dart';

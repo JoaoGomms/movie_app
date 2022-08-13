@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:mobx/mobx.dart';
 import 'package:movie_app/features/src/domain/usecases/get_movie_by_id.dart';
 
@@ -30,7 +32,7 @@ abstract class _HomeStoreBase with Store {
         },
       );
     } catch (e) {
-      print(e);
+      log('ERRO NO FOLD BY ID: $e');
     }
   }
 }
