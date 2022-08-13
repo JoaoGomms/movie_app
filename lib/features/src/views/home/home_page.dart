@@ -56,6 +56,13 @@ class _HomePageState extends State<HomePage> {
                           onPressed: () {}, icon: Icon(Icons.favorite_rounded))
                     ],
                   ),
+                  Row(
+                    children: [
+                      MovieInfoIconTile(
+                          icon: Icons.favorite,
+                          text: '${store.movie.likes} Likes')
+                    ],
+                  )
                 ],
               ),
             )
