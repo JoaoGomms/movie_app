@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:mobx/mobx.dart';
 import 'package:movie_app/features/src/domain/usecases/get_movie_by_id.dart';
+import 'package:movie_app/features/src/domain/usecases/get_similar_movies.dart';
 
 import '../../../domain/entities/movie.dart';
 
@@ -11,11 +12,15 @@ class HomeStore = _HomeStoreBase with _$HomeStore;
 
 abstract class _HomeStoreBase with Store {
   GetMovieById getMovieById;
+  GetSimilarMovies getSimilarMovies;
 
-  _HomeStoreBase(this.getMovieById);
+  _HomeStoreBase(this.getMovieById, this.getSimilarMovies);
 
   @observable
   Movie movie = Movie(name: '', imageUrl: '', popularity: 0, voteCount: 0);
+
+  @observable
+  ObservableList<Movie> similarMovies = ObservableList();
 
   @action
   Future fetchMovieById(int id) async {
@@ -33,6 +38,18 @@ abstract class _HomeStoreBase with Store {
       );
     } catch (e) {
       log('ERRO NO FOLD BY ID: $e');
+    }
+  }
+
+  @action
+  Future fetchSimilarMovies(int id, int page) async {
+    try {
+      final response = await getSimilarMovies(id, page);
+      response.fold((l) => 'Erro ao retornar lista de filmes similares', (r) {
+        similarMovies.addAll(r);
+      });
+    } catch (e) {
+      log('ERRO NO FOLD SIMILAR MOVIES: $e');
     }
   }
 }
