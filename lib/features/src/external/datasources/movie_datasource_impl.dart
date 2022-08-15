@@ -38,8 +38,7 @@ class MovieDatasourceImpl implements MovieDatasource {
       List<MovieModel> movieList = [];
 
       for (var movie in similarMovieList) {
-        print(movie);
-        movieList.add(MovieModel.fromJson(movie.data));
+        movieList.add(MovieModel.fromJson(movie));
       }
 
       return movieList;
