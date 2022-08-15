@@ -20,6 +20,9 @@ abstract class _HomeStoreBase with Store {
   Movie movie = Movie(name: '', imageUrl: '', popularity: 0, voteCount: 0);
 
   @observable
+  bool isFavorite = false;
+
+  @observable
   ObservableList<Movie> similarMovies = ObservableList();
 
   @action
