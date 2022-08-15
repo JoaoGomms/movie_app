@@ -28,35 +28,48 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          leading: IconButton(
-        icon: const Icon(Icons.arrow_back),
-        onPressed: () {},
-      )),
-      body: Observer(builder: (context) {
-        return SingleChildScrollView(
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.blue[300],
+        body: SingleChildScrollView(
           child: Column(
             children: [
-              const MovieInformation(),
-              ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: store.similarMovies.length,
-                  itemBuilder: (context, index) {
-                    var actualSimilarMovie = store.similarMovies[index];
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SimilarMovieInfo(movie: actualSimilarMovie),
-                        const Icon(Icons.check_circle)
-                      ],
-                    );
-                  })
+              Stack(
+                children: [
+                  const MovieInformation(),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.blue,
+                      child: Icon(Icons.arrow_back),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [
+                          Colors.transparent,
+                          Colors.blue.shade300,
+                        ]))),
+                  )
+                ],
+              ),
+              Observer(builder: (context) {
+                return ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: store.similarMovies.length,
+                    itemBuilder: (context, index) {
+                      var actualSimilarMovie = store.similarMovies[index];
+                      return SimilarMovieInfo(movie: actualSimilarMovie);
+                    });
+              })
             ],
           ),
-        );
-      }),
+        ),
+      ),
     );
   }
 }
