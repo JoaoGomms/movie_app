@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:movie_app/features/src/domain/usecases/get_similar_movies.dart';
 import 'package:movie_app/features/src/external/datasources/movie_datasource_impl.dart';
 
 import 'features/app_widget.dart';
@@ -23,7 +24,9 @@ void configApp() {
   getIt.registerSingleton<MovieDatasource>(MovieDatasourceImpl(GetIt.I()));
   getIt.registerSingleton<MovieRepository>(MovieRepositoryImpl(GetIt.I()));
   getIt.registerSingleton<GetMovieById>(GetMovieByIdUsecase(GetIt.I()));
-  getIt.registerSingleton<HomeStore>(HomeStore(GetIt.I()));
+  getIt.registerSingleton<GetSimilarMovies>(GetSimilarMoviesUsecase(GetIt.I()));
+
+  getIt.registerSingleton<HomeStore>(HomeStore(GetIt.I(), GetIt.I()));
 }
 
 Dio configDio() {
