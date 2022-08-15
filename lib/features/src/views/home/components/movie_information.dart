@@ -26,12 +26,8 @@ class _MovieInformationState extends State<MovieInformation> {
             height: 250,
             width: MediaQuery.of(context).size.width,
           ),
-          // TODO GRADIENT
-          // const SizedBox(
-          //   height: 25,
-          // ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Column(
               children: [
                 Row(
@@ -43,7 +39,15 @@ class _MovieInformationState extends State<MovieInformation> {
                           fontSize: 24, fontWeight: FontWeight.w700),
                     ),
                     IconButton(
-                        onPressed: () {}, icon: Icon(Icons.favorite_rounded))
+                        onPressed: () {
+                          store.isFavorite = !store.isFavorite;
+                        },
+                        icon: store.isFavorite
+                            ? const Icon(
+                                Icons.favorite_rounded,
+                                color: Colors.red,
+                              )
+                            : const Icon(Icons.favorite_border))
                   ],
                 ),
                 Row(
@@ -56,7 +60,7 @@ class _MovieInformationState extends State<MovieInformation> {
                     ),
                     MovieInfoIconTile(
                         icon: Icons.abc_rounded,
-                        text: '${store.movie.voteCount} Watched')
+                        text: '${store.movie.popularity} Views')
                   ],
                 )
               ],
