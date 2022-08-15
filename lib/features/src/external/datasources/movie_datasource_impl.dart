@@ -16,8 +16,8 @@ class MovieDatasourceImpl implements MovieDatasource {
   }
 
   Future<MovieModel> getAndParseMovie(String path) async {
-    final movieDetails = await dio.get(
-        'https://api.themoviedb.org/3/movie/11544?api_key=d3658a5e2b9b0484f233be9d70f0aeeb');
+    final movieDetails =
+        await dio.get('https://api.themoviedb.org/3/movie/11544?api_key=d3658a5e2b9b0484f233be9d70f0aeeb');
 
     if (movieDetails.statusCode == 200) {
       return MovieModel.fromJson(movieDetails.data);
@@ -28,12 +28,11 @@ class MovieDatasourceImpl implements MovieDatasource {
 
   @override
   Future<List<MovieModel>> getSimilarMovies(int id, int page) async {
-    final similarMoviesListResponse = await dio.get(
-        'https://api.themoviedb.org/3/movie/11544/similar?api_key=d3658a5e2b9b0484f233be9d70f0aeeb');
+    final similarMoviesListResponse =
+        await dio.get('https://api.themoviedb.org/3/movie/11544/similar?api_key=d3658a5e2b9b0484f233be9d70f0aeeb');
 
     if (similarMoviesListResponse.statusCode == 200) {
-      final similarMovieList =
-          similarMoviesListResponse.data['results'] as List;
+      final similarMovieList = similarMoviesListResponse.data['results'] as List;
 
       List<MovieModel> movieList = [];
 

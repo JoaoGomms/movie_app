@@ -4,8 +4,7 @@ class MovieInfoIconTile extends StatelessWidget {
   final IconData icon;
   final String text;
 
-  const MovieInfoIconTile({required this.icon, required this.text, Key? key})
-      : super(key: key);
+  const MovieInfoIconTile({required this.icon, required this.text, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

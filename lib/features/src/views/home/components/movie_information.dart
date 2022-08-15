@@ -35,8 +35,7 @@ class _MovieInformationState extends State<MovieInformation> {
                   children: [
                     Text(
                       store.movie.name,
-                      style: const TextStyle(
-                          fontSize: 24, fontWeight: FontWeight.w700),
+                      style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
                     ),
                     IconButton(
                         onPressed: () {
@@ -52,15 +51,11 @@ class _MovieInformationState extends State<MovieInformation> {
                 ),
                 Row(
                   children: [
-                    MovieInfoIconTile(
-                        icon: Icons.favorite,
-                        text: '${store.movie.voteCount} Likes'),
+                    MovieInfoIconTile(icon: Icons.favorite, text: '${store.movie.voteCount} Likes'),
                     const SizedBox(
                       width: 24,
                     ),
-                    MovieInfoIconTile(
-                        icon: Icons.abc_rounded,
-                        text: '${store.movie.popularity} Views')
+                    MovieInfoIconTile(icon: Icons.abc_rounded, text: '${store.movie.popularity} Views')
                   ],
                 )
               ],

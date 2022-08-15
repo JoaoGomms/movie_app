@@ -23,8 +23,7 @@ class _SimilarMovieInfoState extends State<SimilarMovieInfo> {
       Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text(widget.movie.name,
-              softWrap: true, overflow: TextOverflow.ellipsis),
+          Text(widget.movie.name, softWrap: true, overflow: TextOverflow.ellipsis),
           // Text('Ano e Genero')
         ],
       ),

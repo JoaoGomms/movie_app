@@ -24,8 +24,7 @@ mixin _$HomeStore on _HomeStoreBase, Store {
     });
   }
 
-  late final _$isFavoriteAtom =
-      Atom(name: '_HomeStoreBase.isFavorite', context: context);
+  late final _$isFavoriteAtom = Atom(name: '_HomeStoreBase.isFavorite', context: context);
 
   @override
   bool get isFavorite {
@@ -40,8 +39,7 @@ mixin _$HomeStore on _HomeStoreBase, Store {
     });
   }
 
-  late final _$similarMoviesAtom =
-      Atom(name: '_HomeStoreBase.similarMovies', context: context);
+  late final _$similarMoviesAtom = Atom(name: '_HomeStoreBase.similarMovies', context: context);
 
   @override
   ObservableList<Movie> get similarMovies {
@@ -56,21 +54,18 @@ mixin _$HomeStore on _HomeStoreBase, Store {
     });
   }
 
-  late final _$fetchMovieByIdAsyncAction =
-      AsyncAction('_HomeStoreBase.fetchMovieById', context: context);
+  late final _$fetchMovieByIdAsyncAction = AsyncAction('_HomeStoreBase.fetchMovieById', context: context);
 
   @override
   Future<dynamic> fetchMovieById(int id) {
     return _$fetchMovieByIdAsyncAction.run(() => super.fetchMovieById(id));
   }
 
-  late final _$fetchSimilarMoviesAsyncAction =
-      AsyncAction('_HomeStoreBase.fetchSimilarMovies', context: context);
+  late final _$fetchSimilarMoviesAsyncAction = AsyncAction('_HomeStoreBase.fetchSimilarMovies', context: context);
 
   @override
   Future<dynamic> fetchSimilarMovies(int id, int page) {
-    return _$fetchSimilarMoviesAsyncAction
-        .run(() => super.fetchSimilarMovies(id, page));
+    return _$fetchSimilarMoviesAsyncAction.run(() => super.fetchSimilarMovies(id, page));
   }
 
   @override

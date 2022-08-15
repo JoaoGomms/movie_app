@@ -32,11 +32,7 @@ abstract class _HomeStoreBase with Store {
       response.fold(
         (l) => 'Erro ao retornar filme',
         (r) {
-          movie = Movie(
-              imageUrl: r.imageUrl,
-              name: r.name,
-              popularity: r.popularity,
-              voteCount: r.voteCount);
+          movie = Movie(imageUrl: r.imageUrl, name: r.name, popularity: r.popularity, voteCount: r.voteCount);
         },
       );
     } catch (e) {
