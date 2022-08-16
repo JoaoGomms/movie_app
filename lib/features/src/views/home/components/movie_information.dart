@@ -20,11 +20,26 @@ class _MovieInformationState extends State<MovieInformation> {
     return Observer(builder: (context) {
       return Column(
         children: [
-          Image.network(
-            store.movie.imageUrl,
-            fit: BoxFit.fitWidth,
-            height: 250,
-            width: MediaQuery.of(context).size.width,
+          Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              Image.network(
+                store.movie.imageUrl,
+                fit: BoxFit.fitWidth,
+                height: 270,
+                width: MediaQuery.of(context).size.width,
+              ),
+              Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                        Colors.transparent,
+                        Colors.blue.shade300,
+                      ]))),
+            ],
           ),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -35,27 +50,35 @@ class _MovieInformationState extends State<MovieInformation> {
                   children: [
                     Text(
                       store.movie.name,
-                      style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
+                      style: const TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white),
                     ),
                     IconButton(
                         onPressed: () {
                           store.isFavorite = !store.isFavorite;
                         },
                         icon: store.isFavorite
-                            ? const Icon(
+                            ? Icon(
                                 Icons.favorite_rounded,
-                                color: Colors.red,
+                                color: Colors.blue[900],
                               )
-                            : const Icon(Icons.favorite_border))
+                            : Icon(Icons.favorite_border,
+                                color: Colors.blue[900]))
                   ],
                 ),
                 Row(
                   children: [
-                    MovieInfoIconTile(icon: Icons.favorite, text: '${store.movie.voteCount} Likes'),
+                    MovieInfoIconTile(
+                        icon: Icons.favorite,
+                        text: '${store.movie.voteCount} Likes'),
                     const SizedBox(
                       width: 24,
                     ),
-                    MovieInfoIconTile(icon: Icons.abc_rounded, text: '${store.movie.popularity} Views')
+                    MovieInfoIconTile(
+                        icon: Icons.visibility_rounded,
+                        text: '${store.movie.popularity} Views')
                   ],
                 )
               ],

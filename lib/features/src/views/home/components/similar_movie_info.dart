@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:movie_app/features/src/domain/entities/movie.dart';
 
 class SimilarMovieInfo extends StatefulWidget {
@@ -15,7 +15,7 @@ class _SimilarMovieInfoState extends State<SimilarMovieInfo> {
     return Row(children: [
       Image.network(
         widget.movie.imageUrl,
-        height: 70,
+        height: 90,
       ),
       const SizedBox(
         width: 4,
@@ -23,7 +23,12 @@ class _SimilarMovieInfoState extends State<SimilarMovieInfo> {
       Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text(widget.movie.name, softWrap: true, overflow: TextOverflow.ellipsis),
+          Text(widget.movie.name,
+              style: const TextStyle(
+                  color: Colors.white, fontWeight: FontWeight.w500),
+              softWrap: true,
+              overflow: TextOverflow.ellipsis),
+          // Text(data)
           // Text('Ano e Genero')
         ],
       ),
