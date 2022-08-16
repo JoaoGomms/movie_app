@@ -49,7 +49,7 @@ class _MovieInformationState extends State<MovieInformation> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      store.movie.name,
+                      'asasd',
                       style: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.w700,
